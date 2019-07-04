@@ -11,60 +11,67 @@
   </head>
 
   <body onload="fetchIssues()">
+    <nav class="navbar navbar-dark bg-dark mb-1">
+      <a class="navbar-brand text-light">Issue Tracker</a>
+    </nav>
     <div class="container">
-      <h1>Issue Tracker</h1>
+      
 
-      <div class="jumbotron">
-        <h1>Add New Issue</h1>
+      <div class="row">
 
-        <form id="issue-form">
-          <div class="form-group">
-            <label for="issue-desc">Description</label>
-            <input
-              type="text"
-              id="issue-desc"
-              class="form-control"
-              placeholder="Briefly describe the issue"
-              required
-              minlength="5"
-              maxlength="50">
+        <div class="jumbotron h-50 col-md-5">
+          <h1>Add New Issue</h1>
+          <form id="issue-form">
+            <div class="form-group">
+              <label for="issue-desc">Description</label>
+              <input
+                type="text"
+                id="issue-desc"
+                class="form-control"
+                placeholder="Briefly describe the issue"
+                required
+                minlength="5"
+                maxlength="50"
+                autofocus>
+            </div>
+  
+            <div class="form-group">
+              <label for="issue-priority">Priority</label>
+              <select id="issue-priority" class="form-control">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+  
+            <div class="form-group">
+              <label for="issue-worker">Assigned to</label>
+              <input
+                type="text"
+                id="issue-worker"
+                class="form-control"
+                placeholder="Enter the name of the responsible person"
+                required
+                minlength="2"
+                maxlength="30">
+            </div>
+  
+            <button type="submit" class="btn btn-primary">Create Issue</button>
+          </form>
+        </div>
+  
+        <div class="col-md-7">
+          <div id="issues-list">
           </div>
-
-          <div class="form-group">
-            <label for="issue-priority">Priority</label>
-            <select id="issue-priority" class="form-control">
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="issue-worker">Assigned to</label>
-            <input
-              type="text"
-              id="issue-worker"
-              class="form-control"
-              placeholder="Enter the name of the responsible person"
-              required
-              minlength="2"
-              maxlength="30">
-          </div>
-
-          <button type="submit" class="btn btn-primary">Create Issue</button>
-        </form>
-      </div>
-
-      <div class="col-lg-12">
-        <div id="issues-list">
         </div>
       </div>
+
 
       <div class="footer">
         Issue Tracker
       </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"></script>

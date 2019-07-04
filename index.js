@@ -21,6 +21,7 @@ function createIssue(event) {
     localStorage.setItem('issues', JSON.stringify(updatedIssues));
   }
   issueForm.reset();
+  issueForm.querySelector('#issue-desc').focus();
   fetchIssues();
 }
 
@@ -36,6 +37,7 @@ function fetchIssues() {
 }
 
 function closeIssue(id) {
+  event.target.disabled = true;
   const issues = JSON.parse(localStorage.getItem('issues'));
 
   const updatedIssues = issues.map(issue => {
@@ -55,15 +57,29 @@ function deleteIssue(id) {
   fetchIssues();
 }
 
+function getPriorityClass(priority) {
+  let classList = 'badge ';
+  if (priority === 'High') classList += 'badge-success';
+  else if (priority === 'Medium') classList += 'badge-warning';
+  else if (priority === 'Low') classList += 'badge-secondary';
+  return classList;
+}
+
+function getStatusClass(status) {
+  let classList = 'badge ';
+  if (status === 'Open') classList += 'badge-info';
+  else if (status === 'Closed') classList += 'badge-secondary';
+  return classList;
+}
+
 const issueElement = (issue) => {
   const { id, desc, priority, worker, status } = issue;
-
   return `
-  <div class="rounded p-3 border bg-light">
+  <div class="rounded p-3 border bg-light mb-2">
     <h6>Issue ID: ${id}</h6>
-    <h5 class="badge badge-info">${status}</h5>
+    <h5 class="${getStatusClass(status)}">${status}</h5>
+    <p class="${getPriorityClass(priority)}"><i class="fas fa-clock"></i> ${priority} Priority</p>
     <h3>${desc}</h3>
-    <p><i class="fas fa-clock"></i> ${priority}</p>
     <p><i class="fas fa-address-card"></i> ${worker}</p>
     <a href="#" onclick="closeIssue('${id}')" class="btn btn-warning">Close</a>
     <a href="#" onclick="deleteIssue('${id}')" class="btn btn-danger">Delete</a>
