@@ -8,7 +8,7 @@
   <title>Issue Tracker</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/348fc73cb5.js"></script>
+  <script src="https://kit.fontawesome.com/348fc73cb5.js"></script>
 </head>
 
 <body onload="fetchIssues()">
@@ -20,7 +20,14 @@
       <form id="issue-form">
         <div class="form-group">
           <label for="issue-desc">Description</label>
-          <input type="text" id="issue-desc" class="form-control" placeholder="Briefly describe the issue">
+          <input
+            type="text"
+            id="issue-desc"
+            class="form-control"
+            placeholder="Briefly describe the issue"
+            required
+            minlength="5"
+            maxlength="50">
         </div>
         <div class="form-group">
           <label for="issue-priority">Priority</label>
@@ -30,11 +37,17 @@
             <option value="low">Low</option>
           </select>
         </div>
-        
+
         <div class="form-group">
-          <label for="issue-"></label>
-          <input type="text" id="issue-worker" class="form-control"
-            placeholder="Enter the name of the responsible person">
+          <label for="issue-worker">Assigned to</label>
+          <input
+            type="text"
+            id="issue-worker"
+            class="form-control"
+            placeholder="Enter the name of the responsible person"
+            required
+            minlength="2"
+            maxlength="30">
         </div>
         <button type="submit" class="btn btn-primary">Create Issue</button>
       </form>
