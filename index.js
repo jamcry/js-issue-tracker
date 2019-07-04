@@ -29,12 +29,10 @@ function fetchIssues() {
   const issuesList = document.getElementById('issues-list');
   issuesList.innerHTML = '';
 
-  if (issues) {
-    [...issues].forEach((issue) => {
-      const newIssue = issueElement(issue);
-      issuesList.innerHTML += newIssue;
-    })
-  }
+  [...issues].forEach((issue) => {
+    const newIssue = issueElement(issue);
+    issuesList.innerHTML += newIssue;
+  })
 }
 
 function closeIssue(id) {
